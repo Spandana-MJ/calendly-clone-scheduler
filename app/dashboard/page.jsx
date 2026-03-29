@@ -1,12 +1,13 @@
 "use client";
 
+
 import CopyLinkButton from "@/components/CopyLinkButton";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { Suspense,useEffect, useMemo, useState } from "react";
 
-export default function DashboardPage() {
+ function DashboardContent(){
   const { data: session, status } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -152,5 +153,13 @@ export default function DashboardPage() {
         )}
       </section>
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<div className="p-10 text-center">Loading...</div>}>
+      <DashboardContent />
+    </Suspense>
   );
 }
