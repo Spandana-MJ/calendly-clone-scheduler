@@ -1,26 +1,22 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.input {
+  @apply w-full border border-gray-300 p-2 rounded mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.btn {
+  @apply w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* react-calendar polish */
+.calendar-shell .react-calendar {
+  @apply w-full max-w-full border-0 bg-transparent font-sans text-slate-800;
 }
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.calendar-shell .react-calendar__tile--active {
+  @apply rounded-md bg-blue-600 text-white;
+}
+.calendar-shell .react-calendar__tile--now {
+  @apply rounded-md bg-slate-100;
 }
